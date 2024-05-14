@@ -1,12 +1,10 @@
 # PASTA (PAtient Simulation for Testing of bsn Applications)
 
-**Paper Title**: An Experience Report on Testing a Body Sensor Network Application
+**Paper Title**: Exploring Different Strategies for Testing a Body Sensor Network
 
-**Submitted to**: 50th Euromicro Conference Series on Software Engineering and Advanced Applications (SEAA) 2024
+**Submitted to**: Journal of Systems and Software (JSS)
 
-**Abstract**: Body Sensor Networks (BSNs) are becoming increasingly popular because of the thrust on wearable biosensor technology development. 
-They provide an inexpensive means to continuously monitor the health status of patients and timely detect potential risks. Notwithstanding this growing interest and their critical nature, we notice a scarcity of approaches in the literature for the testing of BSN applications. Aiming at filling this gap, in this paper we describe our experience in testing an open-source BSN, namely the SA-BSN (Self-Adaptive BSN). The testing approach we used is PASTA (PAtient Simulation for Testing bsn Applications), an original approach that combines concepts from Combinatorial Testing and Model-based Testing. Specifically, we model the six SA-BSN sensors by Discrete Time Markov Chains and mock various patients by considering different combinations of the transition matrices representing the sensors. In our study, PASTA was able to detect some unknown failures and showed better effectiveness when compared to a random baseline. 
-Out of this experience, we summarize a set of lessons learned for both researchers and practitioners and hint at promising future enhancements of PASTA.
+**Abstract**: To be update
   
 ## **Configure the SA-BSN**:
 1. Download and install the [ROS Melodic for Ubuntu 18.04](http://wiki.ros.org/melodic/Installation/Ubuntu)
