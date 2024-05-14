@@ -1,4 +1,4 @@
-# PASTA (PAtient Simulation for Testing of bsn Applications)
+# PASTA, TransCov e ValComb
 
 **Paper Title**: Exploring Different Strategies for Testing a Body Sensor Network
 
@@ -16,8 +16,8 @@
 [comment]: <> ($ cd PASTA_SAFECOMP-5F11/)
 
 ```
-$ git clone https://github.com/samirasilva/PASTA_SEAA.git
-$ cd PASTA_SEAA
+$ git clone https://github.com/samirasilva/Paper_JSS.git
+$ cd Paper_JSS
 ```
 
 ## PASTA
