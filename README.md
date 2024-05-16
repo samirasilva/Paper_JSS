@@ -29,19 +29,27 @@ $ \cp PASTA/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_system/comp
 ```
 $ \cp PASTA/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
 ```
-3. Replace the *PatientModule.cpp* file:
+3. Replace the *DataGenerator.hpp* file:
+```
+$ \cp PASTA/BSN_Files_to_Replace/DataGenerator.hpp bsn_path/src/sa-bsn/src/libbsn/include/libbsn/generator/DataGenerator.hpp
+``` 
+4. Replace the *PatientModule.cpp* file:
 ```
 $ \cp PASTA/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
 ```
-4. Replace the *g4t1.launch* file:
+5. Replace the *PatientModule.hpp* file:
+```
+$ \cp PASTA/BSN_Files_to_Replace/PatientModule.hpp bsn_path/src/sa-bsn/environment/patient/include/PatientModule.hpp
+``` 
+6. Replace the *g4t1.launch* file:
 ```
 $ \cp PASTA/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
 ```
-5. Replace the *run.sh* file:
+7. Replace the *run.sh* file:
 ```
 $ \cp PASTA/BSN_Files_to_Replace/run.sh bsn_path/run.sh
 ```
-6. Build the SA-BSN:
+8. Build the SA-BSN:
 ```
 $ (cd bsn_path ; catkin_make)
 ```
