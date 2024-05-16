@@ -80,7 +80,7 @@ $ python PASTA/PASTA_Scripts/conver_tm_into_patient.py PASTA/Output_Files/2_Test
 #### **3. Executing PASTA**:
 1. Open the terminal and type:
 ```
-bash PASTA/PASTA_Scripts/script_pasta_dns.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
+bash PASTA/PASTA_Scripts/script_pasta_jss.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
 ```
 Note: 
 Replace `number_of_patients` with the number of patient files in `PASTA/Output_Files/2_Test_Patients` (e.g., 278 patients).
@@ -154,7 +154,7 @@ $ python PASTA/PASTA_Scripts/conver_tm_into_patient.py PASTA/Output_Files/2_Test
 #### **3. Executing TransCov**:
 1. Open the terminal and type:
 ```
-bash PASTA/PASTA_Scripts/script_pasta_dns.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
+bash PASTA/PASTA_Scripts/script_pasta_jss.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
 ```
 Note: 
 Replace `number_of_patients` with the number of patient files in `PASTA/Output_Files/2_Test_Patients` (e.g., 278 patients).
@@ -227,7 +227,7 @@ $ python PASTA/PASTA_Scripts/conver_tm_into_patient.py PASTA/Output_Files/2_Test
 #### **3. Executing ValComb**:
 1. Open the terminal and type:
 ```
-bash PASTA/PASTA_Scripts/script_pasta_dns.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
+bash PASTA/PASTA_Scripts/script_pasta_jss.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
 ```
 Note: 
 Replace `number_of_patients` with the number of patient files in `PASTA/Output_Files/2_Test_Patients` (e.g., 278 patients).
@@ -283,7 +283,7 @@ $ (cd Random_Approach/Output_Files/3_Sensor_Readings_BSN_Outcome_and_Expected_Ou
 ```
 2. Type:
 ```
-bash Random_Approach/Random_Scripts/script_baseline_dns.sh Random_Approach/Output_Files/1_Test_Patients 1 'execution_time' 'number_of_executions'
+bash Random_Approach/Random_Scripts/script_baseline_jss.sh Random_Approach/Output_Files/1_Test_Patients 1 'execution_time' 'number_of_executions'
 ```
 To compare PASTA to Random, the `execution_time` should be equal to the number of patients in PASTA x execution time in PASTA (e.g., 278x30=8340 seconds).
 `number_of_executions` is the number of times that Random should be run (e.g., 10 times).
