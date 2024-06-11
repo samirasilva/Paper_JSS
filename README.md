@@ -19,7 +19,7 @@
 $ git clone https://github.com/samirasilva/Paper_JSS.git
 $ cd Paper_JSS
 ```
-## PASTA
+## 1. PASTA
 ### **Preparing the SA-BSN to PASTA**:
 1. Replace the *G4T1.cpp* file:
 ```
