@@ -160,7 +160,7 @@ $ (cd bsn_path ; catkin_make)
 
 1. Download the [ACTS 3.2 tool](https://github.com/usnistgov/combinatorial-testing-tools).
 2. Execute the ACTS tool (double-click on the *jar* file).
-3. Click on *System->Open...* and choose the file `Paper_JSS/PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt` previously downloaded on your computer.
+3. Click on *System->Open...* and choose the file `Paper_JSS/TransCov/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt` previously downloaded on your computer.
 4. Click on *Edit->Modify...* to modify "parameters" or "constraints" for the combinations.
 5. Click on *Build->Build* to regenerate the t-way combinations.
 6. Finally, save your modifications with *System->Save*.
@@ -170,24 +170,24 @@ $ (cd bsn_path ; catkin_make)
 
 1. Execute the script `conver_tm_into_patient.py` to transform each t-way combination into a patient:
 ```
-$ python PASTA/PASTA_Scripts/conver_tm_into_patient.py PASTA/Output_Files/2_Test_Patients PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt
+$ python TransCov/TransCov_Scripts/conver_tm_into_patient.py TransCov/Output_Files/2_Test_Patients TransCov/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt
 
 ```
-`PASTA/Output_Files/2_Test_Patients` is the folder where you want to save the patients.
+`TransCov/Output_Files/2_Test_Patients` is the folder where you want to save the patients.
 
 #### **3. Executing TransCov**:
 1. Open the terminal and type:
 ```
-bash PASTA/PASTA_Scripts/script_pasta_jss.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
+bash TransCov/TransCov_Scripts/script_pasta_jss.sh TransCov/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
 ```
 Note: 
 Replace `number_of_patients` with the number of patient files in `PASTA/Output_Files/2_Test_Patients` (e.g., 278 patients).
 `execution_time` determines how much time each patient should be run (e.g., 30 seconds).
-`number_of_executions` is the amount of times that PASTA should be run (e.g, 10 times).
+`number_of_executions` is the amount of times that PASTA should be run (e.g, 25 times).
 
 2. To parse the log files, collect Sensor Readings and BSN Outcomes, and compute the Expected Outcome, type:
 ```
-bash  PASTA/PASTA_Scripts/read_all_output.sh 'number_of_patients' 'number_of_executions'
+python  TransCov/TransCov_Scripts/read_all_output.py 'number_of_patients' 'number_of_executions'
 
 ```
 
