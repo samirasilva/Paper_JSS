@@ -97,7 +97,7 @@ Replace `number_of_patients` with the number of patient files in `PASTA/Output_F
 
 2. To parse the log files, collect Sensor Readings and BSN Outcomes, and compute the Expected Outcome, type:
 ```
-bash  PASTA/PASTA_Scripts/read_all_output.sh 'number_of_patients' 'number_of_executions'
+python  PASTA/PASTA_Scripts/read_all_output.py 'number_of_patients' 'number_of_executions'
 
 ```
 
