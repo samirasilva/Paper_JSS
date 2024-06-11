@@ -4,7 +4,7 @@
 
 **Submitted to**: Journal of Systems and Software (JSS)
 
-**Abstract**: {\color{red}To be updated}
+**Abstract**: TO BE UPDATED
   
 ## **Configure the SA-BSN**:
 1. Download and install the [ROS Noetic for Ubuntu 20.04](http://wiki.ros.org/noetic/Installation/Ubuntu)
