@@ -287,7 +287,7 @@ python ValComb/ValComb_Scripts/read_all_output.py 'number_of_patients' 'number_o
 - [4 - Sensor Readings, BSN Outcomes and Expected Outcomes](https://github.com/samirasilva/Paper_JSS/tree/main/ValComb/Output_Files/4_Sensor_Readings_BSN_Outcome_and_Expected_Outcome) (Parsing of BSN Logs)
 - [5 - Summary of Results](https://github.com/samirasilva/Paper_JSS/blob/main/ValComb/Output_Files/5_Summary_Of_Results/Pasta_experiments.ods) (Testing Results)
   
-## Random
+## 4. Random
 ### **Preparing the SA-BSN to Random**:
 1. Replace the *G4T1.cpp* file:
 ```
