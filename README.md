@@ -156,7 +156,7 @@ $ (cd bsn_path ; catkin_make)
 ### **Running TransCov**:
 
 #### **1. Generation of T-way Combinations**:
-*(Skip this step if you want to use the [provided t-way combinations](https://github.com/samirasilva/Paper_JSS/blob/main/PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt))*
+*(Skip this step if you want to use the [provided t-way combinations](https://github.com/samirasilva/Paper_JSS/blob/main/TransCov/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt))*
 
 1. Download the [ACTS 3.2 tool](https://github.com/usnistgov/combinatorial-testing-tools).
 2. Execute the ACTS tool (double-click on the *jar* file).
@@ -202,39 +202,39 @@ python  TransCov/TransCov_Scripts/read_all_output.py 'number_of_patients' 'numbe
 ### **Preparing the SA-BSN to ValComb**:
 1. Replace the *G4T1.cpp* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_system/components/component/src/g4t1/G4T1.cpp
+$ \cp ValComb/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_system/components/component/src/g4t1/G4T1.cpp
 ```
 2. Replace the *DataGenerator.cpp* file:T
 ```
-$ \cp TransCov/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
+$ \cp ValComb/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
 ```
 3. Replace the *DataGenerator.hpp* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/DataGenerator.hpp bsn_path/src/sa-bsn/src/libbsn/include/libbsn/generator/DataGenerator.hpp
+$ \cp ValComb/BSN_Files_to_Replace/DataGenerator.hpp bsn_path/src/sa-bsn/src/libbsn/include/libbsn/generator/DataGenerator.hpp
 ``` 
 4. Replace the *PatientModule.cpp* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
+$ \cp ValComb/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
 ```
 5. Replace the *PatientModule.hpp* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/PatientModule.hpp bsn_path/src/sa-bsn/environment/patient/include/PatientModule.hpp
+$ \cp ValComb/BSN_Files_to_Replace/PatientModule.hpp bsn_path/src/sa-bsn/environment/patient/include/PatientModule.hpp
 ``` 
 6. Replace the *g4t1.launch* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
+$ \cp ValComb/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
 ```
 7. Replace the *CentralHub.cpp* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/CentralHub.cpp bsn_path/src/sa-bsn/target_system/components/component/src/CentralHub.cpp
+$ \cp ValComb/BSN_Files_to_Replace/CentralHub.cpp bsn_path/src/sa-bsn/target_system/components/component/src/CentralHub.cpp
 ```
 8. Replace the *CentralHub.hpp* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/CentralHub.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/CentralHub.hpp
+$ \cp ValComb/BSN_Files_to_Replace/CentralHub.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/CentralHub.hpp
 ```
 9. Replace the *run.sh* file:
 ```
-$ \cp TransCov/BSN_Files_to_Replace/run.sh bsn_path/run.sh
+$ \cp ValComb/BSN_Files_to_Replace/run.sh bsn_path/run.sh
 ```
 10. Build the SA-BSN:
 ```
@@ -245,11 +245,11 @@ $ (cd bsn_path ; catkin_make)
 ### **Running ValComb**:
 
 #### **1. Generation of T-way Combinations**:
-*(Skip this step if you want to use the [provided t-way combinations](https://github.com/samirasilva/Paper_JSS/blob/main/PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt))*
+*(Skip this step if you want to use the [provided t-way combinations](https://github.com/samirasilva/Paper_JSS/blob/main/ValComb/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt))*
 
 1. Download the [ACTS 3.2 tool](https://github.com/usnistgov/combinatorial-testing-tools).
 2. Execute the ACTS tool (double-click on the *jar* file).
-3. Click on *System->Open...* and choose the file `Paper_JSS/PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt` previously downloaded on your computer.
+3. Click on *System->Open...* and choose the file `Paper_JSS/ValComb/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt` previously downloaded on your computer.
 4. Click on *Edit->Modify...* to modify "parameters" or "constraints" for the combinations.
 5. Click on *Build->Build* to regenerate the t-way combinations.
 6. Finally, save your modifications with *System->Save*.
@@ -259,33 +259,33 @@ $ (cd bsn_path ; catkin_make)
 
 1. Execute the script `conver_tm_into_patient.py` to transform each t-way combination into a patient:
 ```
-$ python PASTA/PASTA_Scripts/conver_tm_into_patient.py PASTA/Output_Files/2_Test_Patients PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt
+$ python ValComb/ValComb_Scripts/conver_tm_into_patient.py ValComb/Output_Files/2_Test_Patients ValComb/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt
 
 ```
-`PASTA/Output_Files/2_Test_Patients` is the folder where you want to save the patients.
+`ValComb/Output_Files/2_Test_Patients` is the folder where you want to save the patients.
 
 #### **3. Executing ValComb**:
 1. Open the terminal and type:
 ```
-bash PASTA/PASTA_Scripts/script_pasta_jss.sh PASTA/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
+bash ValComb/ValComb_Scripts/script_valcomb_jss.sh ValComb/Output_Files/2_Test_Patients 'number_of_patients' 'execution_time' 'number_of_executions'
 ```
 Note: 
-Replace `number_of_patients` with the number of patient files in `PASTA/Output_Files/2_Test_Patients` (e.g., 278 patients).
+Replace `number_of_patients` with the number of patient files in `ValComb/Output_Files/2_Test_Patients` (e.g., 278 patients).
 `execution_time` determines how much time each patient should be run (e.g., 30 seconds).
-`number_of_executions` is the amount of times that PASTA should be run (e.g, 10 times).
+`number_of_executions` is the amount of times that ValComb should be run (e.g, 25 times).
 
 2. To parse the log files, collect Sensor Readings and BSN Outcomes, and compute the Expected Outcome, type:
 ```
-bash  PASTA/PASTA_Scripts/read_all_output.sh 'number_of_patients' 'number_of_executions'
+python ValComb/ValComb_Scripts/read_all_output.py 'number_of_patients' 'number_of_executions'
 
 ```
 
 #### **Outcome Files**:
-- [1 - ACTS Test Set](https://github.com/samirasilva/Paper_JSS/blob/main/PASTA/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt) (Configuration of the ACTS tool and the output (t-way combinations))
-- [2 - Test Patients](https://github.com/samirasilva/Paper_JSS/tree/main/PASTA/Output_Files/2_Test_Patients) (Patient Configuration Files for the BSN)
-- [3 - BSN Logs ](https://github.com/samirasilva/Paper_JSS/tree/main/PASTA/Output_Files/3_BSN_Logs) (Log files generated by the SA-BSN)
-- [4 - Sensor Readings, BSN Outcomes and Expected Outcomes](https://github.com/samirasilva/Paper_JSS/tree/main/PASTA/Output_Files/4_Sensor_Readings_BSN_Outcome_and_Expected_Outcome) (Parsing of BSN Logs)
-- [5 - Summary of Results](https://github.com/samirasilva/Paper_JSS/blob/main/PASTA/Output_Files/5_Summary_Of_Results/Pasta_experiments.ods) (Testing Results)
+- [1 - ACTS Test Set](https://github.com/samirasilva/Paper_JSS/blob/main/ValComb/Output_Files/1_ACTS_BSN_Test_Set_t2/1_ACTS_BSN_Test_Set_t_2.txt) (Configuration of the ACTS tool and the output (t-way combinations))
+- [2 - Test Patients](https://github.com/samirasilva/Paper_JSS/tree/main/ValComb/Output_Files/2_Test_Patients) (Patient Configuration Files for the BSN)
+- [3 - BSN Logs ](https://github.com/samirasilva/Paper_JSS/tree/main/ValComb/Output_Files/3_BSN_Logs) (Log files generated by the SA-BSN)
+- [4 - Sensor Readings, BSN Outcomes and Expected Outcomes](https://github.com/samirasilva/Paper_JSS/tree/main/ValComb/Output_Files/4_Sensor_Readings_BSN_Outcome_and_Expected_Outcome) (Parsing of BSN Logs)
+- [5 - Summary of Results](https://github.com/samirasilva/Paper_JSS/blob/main/ValComb/Output_Files/5_Summary_Of_Results/Pasta_experiments.ods) (Testing Results)
   
 ## Random
 ### **Preparing the SA-BSN to Random**:
@@ -297,19 +297,31 @@ $ \cp Random_Approach/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_s
 ```
 $ \cp Random_Approach/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
 ```
-3. Replace the *PatientModule.cpp* file:
+3. Replace the *DataGenerator.hpp* file:
+```
+$ \cp Random_Approach/BSN_Files_to_Replace/DataGenerator.hpp bsn_path/src/sa-bsn/src/libbsn/include/libbsn/generator/DataGenerator.hpp
+``` 
+4. Replace the *PatientModule.cpp* file:
 ```
 $ \cp Random_Approach/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
-```
-4. Replace the *g4t1.launch* file:
+``` 
+5. Replace the *g4t1.launch* file:
 ```
 $ \cp Random_Approach/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
 ```
-5. Replace the *run.sh* file:
+6. Replace the *CentralHub.cpp* file:
+```
+$ \cp Random_Approach/BSN_Files_to_Replace/CentralHub.cpp bsn_path/src/sa-bsn/target_system/components/component/src/CentralHub.cpp
+```
+7. Replace the *CentralHub.hpp* file:
+```
+$ \cp Random_Approach/BSN_Files_to_Replace/CentralHub.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/CentralHub.hpp
+```
+8. Replace the *run.sh* file:
 ```
 $ \cp Random_Approach/BSN_Files_to_Replace/run.sh bsn_path/run.sh
 ```
-6. Build the SA-BSN:
+9. Build the SA-BSN:
 ```
 $ (cd bsn_path ; catkin_make)
 ```
@@ -325,12 +337,12 @@ $ (cd Random_Approach/Output_Files/3_Sensor_Readings_BSN_Outcome_and_Expected_Ou
 ```
 bash Random_Approach/Random_Scripts/script_baseline_jss.sh Random_Approach/Output_Files/1_Test_Patients 1 'execution_time' 'number_of_executions'
 ```
-To compare PASTA to Random, the `execution_time` should be equal to the number of patients in PASTA x execution time in PASTA (e.g., 278x30=8340 seconds).
+To compare Random to PASTA, the `execution_time` of Random should be equal to the number of patients in PASTA x execution time in PASTA (e.g., 278x30=8340 seconds).
 `number_of_executions` is the number of times that Random should be run (e.g., 10 times).
 
 3. To parse the log files, collect Sensor Readings and BSN Outcomes, and compute the Expected Outcome, type:
 ```
-bash  Random_Approach/Random_Scripts/read_all_output.sh 1 'number_of_executions'
+python Random_Approach/Random_Scripts/read_all_output.py 1 'number_of_executions'
 ```
 
 ### **Outcome Files**:
