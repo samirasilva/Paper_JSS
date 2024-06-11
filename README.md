@@ -109,7 +109,7 @@ python  PASTA/PASTA_Scripts/read_all_output.py 'number_of_patients' 'number_of_e
 - [5 - Summary of Results](https://github.com/samirasilva/Paper_JSS/blob/main/PASTA/Output_Files/5_Summary_Of_Results/Pasta_experiments.ods) (Testing Results)
 
   
-## 2. ransCov
+## 2. TransCov
 ### **Preparing the SA-BSN to TransCov**:
 1. Replace the *G4T1.cpp* file:
 ```
