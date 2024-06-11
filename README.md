@@ -45,11 +45,19 @@ $ \cp PASTA/BSN_Files_to_Replace/PatientModule.hpp bsn_path/src/sa-bsn/environme
 ```
 $ \cp PASTA/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
 ```
-7. Replace the *run.sh* file:
+7. Replace the *CentralHub.cpp* file:
+```
+$ \cp PASTA/BSN_Files_to_Replace/CentralHub.cpp bsn_path/src/sa-bsn/target_system/components/component/src/CentralHub.cpp
+```
+8. Replace the *CentralHub.hpp* file:
+```
+$ \cp PASTA/BSN_Files_to_Replace/CentralHub.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/CentralHub.hpp
+```
+9. Replace the *run.sh* file:
 ```
 $ \cp PASTA/BSN_Files_to_Replace/run.sh bsn_path/run.sh
 ```
-8. Build the SA-BSN:
+10. Build the SA-BSN:
 ```
 $ (cd bsn_path ; catkin_make)
 ```
