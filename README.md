@@ -93,7 +93,7 @@ bash PASTA/PASTA_Scripts/script_pasta_jss.sh PASTA/Output_Files/2_Test_Patients 
 Note: 
 Replace `number_of_patients` with the number of patient files in `PASTA/Output_Files/2_Test_Patients` (e.g., 278 patients).
 `execution_time` determines how much time each patient should be run (e.g., 30 seconds).
-`number_of_executions` is the amount of times that PASTA should be run (e.g, 10 times).
+`number_of_executions` is the amount of times that PASTA should be run (e.g, 25 times).
 
 2. To parse the log files, collect Sensor Readings and BSN Outcomes, and compute the Expected Outcome, type:
 ```
