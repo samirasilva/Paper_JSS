@@ -182,29 +182,45 @@ bash  PASTA/PASTA_Scripts/read_all_output.sh 'number_of_patients' 'number_of_exe
 - [4 - Sensor Readings, BSN Outcomes and Expected Outcomes](https://github.com/samirasilva/Paper_JSS/tree/main/PASTA/Output_Files/4_Sensor_Readings_BSN_Outcome_and_Expected_Outcome) (Parsing of BSN Logs)
 - [5 - Summary of Results](https://github.com/samirasilva/Paper_JSS/blob/main/PASTA/Output_Files/5_Summary_Of_Results/Pasta_experiments.ods) (Testing Results)
 
-## ValComb
+## 2. ValComb
 ### **Preparing the SA-BSN to ValComb**:
 1. Replace the *G4T1.cpp* file:
 ```
-$ \cp PASTA/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_system/components/component/src/g4t1/G4T1.cpp
+$ \cp TransCov/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_system/components/component/src/g4t1/G4T1.cpp
 ```
-2. Replace the *DataGenerator.cpp* file:
+2. Replace the *DataGenerator.cpp* file:T
 ```
-$ \cp PASTA/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
+$ \cp TransCov/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
 ```
-3. Replace the *PatientModule.cpp* file:
+3. Replace the *DataGenerator.hpp* file:
 ```
-$ \cp PASTA/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
+$ \cp TransCov/BSN_Files_to_Replace/DataGenerator.hpp bsn_path/src/sa-bsn/src/libbsn/include/libbsn/generator/DataGenerator.hpp
+``` 
+4. Replace the *PatientModule.cpp* file:
 ```
-4. Replace the *g4t1.launch* file:
+$ \cp TransCov/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
 ```
-$ \cp PASTA/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
+5. Replace the *PatientModule.hpp* file:
 ```
-5. Replace the *run.sh* file:
+$ \cp TransCov/BSN_Files_to_Replace/PatientModule.hpp bsn_path/src/sa-bsn/environment/patient/include/PatientModule.hpp
+``` 
+6. Replace the *g4t1.launch* file:
 ```
-$ \cp PASTA/BSN_Files_to_Replace/run.sh bsn_path/run.sh
+$ \cp TransCov/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
 ```
-6. Build the SA-BSN:
+7. Replace the *CentralHub.cpp* file:
+```
+$ \cp TransCov/BSN_Files_to_Replace/CentralHub.cpp bsn_path/src/sa-bsn/target_system/components/component/src/CentralHub.cpp
+```
+8. Replace the *CentralHub.hpp* file:
+```
+$ \cp TransCov/BSN_Files_to_Replace/CentralHub.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/CentralHub.hpp
+```
+9. Replace the *run.sh* file:
+```
+$ \cp TransCov/BSN_Files_to_Replace/run.sh bsn_path/run.sh
+```
+10. Build the SA-BSN:
 ```
 $ (cd bsn_path ; catkin_make)
 ```
