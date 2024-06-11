@@ -1,4 +1,4 @@
-# PASTA, TransCov e ValComb
+# PASTA, TransCov, Valcomb and the Random Approach
 
 **Paper Title**: Exploring Different Strategies for Testing a Body Sensor Network
 
