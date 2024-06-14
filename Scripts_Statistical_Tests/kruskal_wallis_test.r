@@ -5,7 +5,7 @@
 
 
 # If .txt tab file, use this
-my_data <- read.delim("data.txt")
+my_data <- read.delim("kruskal_data.txt")
 
 #install if it is not installed
 #install.packages("dplyr")
