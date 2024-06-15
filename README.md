@@ -1,10 +1,10 @@
 # PASTA, TransCov, ValComb and the Random Approach
 
-**Paper Title**: Exploring Different Strategies for Testing a Body Sensor Network
+**Paper Title**: Different Approaches for Testing Body Sensor Network Applications
 
 **Submitted to**: Journal of Systems and Software (JSS)
 
-**Abstract**: TO BE UPDATED
+**Abstract**: Body Sensor Networks (BSNs) have emerged from a recent thrust on wearable biosensor technology development. They provide an inexpensive means to continuously monitor the health status of patients and timely detect potential risks. Notwithstanding the growing interest attracted by BSNs and their critical nature, in the literature, there is a lack of testing approaches for BSNs. In this work, we fill this gap and propose a generic approach, called GATE4BSN , consisting of the abstract steps to be taken for testing the BSN. GATE4BSN is then instantiated in three approaches, namely PASTA (PAtient Simulation for Testing of bsn Applications), ValComb (Sensor Values Combination), and TransCov (Sensor Transitions Coverage). PASTA simulates patients by considering a set of sensors and by mimicking the trend of each sensor via a Discrete Time Markov Chain (DTMC). ValComb makes use of all possible combinations of sensor risk levels to explore different health conditions of a patient. Finally, TransCov employs a dummy patient in which all the transitions in the DTMCs are labeled with equal probability, and DTMCs are executed until all the transitions are covered. We empirically assessed through experiments our three approaches in terms of their effectiveness, i.e., the ability to detect failures, and compared them with a baseline approach. PASTA, ValComb, and TransCov uncovered unknown failures in the system under test, an open source BSN, and showed better effectiveness when compared to a random baseline. Also, statistical analysis shows that while PASTA is the most effective approach, ValComb is the closest to PASTA in terms of effectiveness but approximately 82 times faster.
   
 ## **Configure the SA-BSN**:
 1. Download and install the [ROS Noetic for Ubuntu 20.04](http://wiki.ros.org/noetic/Installation/Ubuntu)
