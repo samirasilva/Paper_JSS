@@ -204,39 +204,43 @@ python  TransCov/TransCov_Scripts/read_all_output.py 'number_of_patients' 'numbe
 ```
 $ \cp ValComb/BSN_Files_to_Replace/G4T1.cpp bsn_path/src/sa-bsn/target_system/components/component/src/g4t1/G4T1.cpp
 ```
-2. Replace the *DataGenerator.cpp* file:T
+2. Replace the *G4T1.hpp* file:
+```
+$ \cp ValComb/BSN_Files_to_Replace/G4T1.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/g4t1/G4T1.hpp
+```
+3. Replace the *DataGenerator.cpp* file:T
 ```
 $ \cp ValComb/BSN_Files_to_Replace/DataGenerator.cpp bsn_path/src/sa-bsn/src/libbsn/src/generator/DataGenerator.cpp
 ```
-3. Replace the *DataGenerator.hpp* file:
+4. Replace the *DataGenerator.hpp* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/DataGenerator.hpp bsn_path/src/sa-bsn/src/libbsn/include/libbsn/generator/DataGenerator.hpp
 ``` 
-4. Replace the *PatientModule.cpp* file:
+5. Replace the *PatientModule.cpp* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/PatientModule.cpp bsn_path/src/sa-bsn/environment/patient/src/PatientModule.cpp
 ```
-5. Replace the *PatientModule.hpp* file:
+6. Replace the *PatientModule.hpp* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/PatientModule.hpp bsn_path/src/sa-bsn/environment/patient/include/PatientModule.hpp
 ``` 
-6. Replace the *g4t1.launch* file:
+7. Replace the *g4t1.launch* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/g4t1.launch bsn_path/src/sa-bsn/configurations/target_system/g4t1.launch
 ```
-7. Replace the *CentralHub.cpp* file:
+8. Replace the *CentralHub.cpp* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/CentralHub.cpp bsn_path/src/sa-bsn/target_system/components/component/src/CentralHub.cpp
 ```
-8. Replace the *CentralHub.hpp* file:
+9. Replace the *CentralHub.hpp* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/CentralHub.hpp bsn_path/src/sa-bsn/target_system/components/component/include/component/CentralHub.hpp
 ```
-9. Replace the *run.sh* file:
+10. Replace the *run.sh* file:
 ```
 $ \cp ValComb/BSN_Files_to_Replace/run.sh bsn_path/run.sh
 ```
-10. Build the SA-BSN:
+11. Build the SA-BSN:
 ```
 $ (cd bsn_path ; catkin_make)
 ```
