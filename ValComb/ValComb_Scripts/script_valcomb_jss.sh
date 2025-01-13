@@ -29,7 +29,7 @@ bsn_patient_folder="${HOME}/sa-bsn/src/sa-bsn/configurations/environment/"
 #rm -f "${HOME}/sa-bsn/Cov_all_patients.txt"
 
 
-cp "combinacoes_100.txt" "${HOME}/sa-bsn/"
+cp "combinations_100.txt" "${HOME}/sa-bsn/"
 
 
 for ((j=0;j<"$number_of_executions";j++));do
