@@ -39,13 +39,14 @@ G4T1::G4T1(int &argc, char **argv, const std::string &name) : lost_packt(false),
         home=homedir;
 
         std::ifstream myfile;
-        myfile.open(home+"/sa-bsn/combinations_100.txt",std::ios_base::in);
+        myfile.open(home+"/BSN_original/sa-bsn/combinations_100.txt",std::ios_base::in);
 
         int number;
         for (int i = 0; i < 3375; i++) {
             for (int j = 0; j < 30; j++) {
                 myfile >> number;
                 mat[i][j]=number;
+                //std::cout<<number<<std::endl;
             }
         }
         current_row_comb=0;
@@ -114,6 +115,12 @@ void G4T1::setUp() {
         it != data_buffer.end(); ++it) {
             (*it) = {0.0};
     }
+    
+    
+    std::random_device rd; //ADDED
+    //std::cout << "Random device output: " << rd() << std::endl;
+    std::mt19937 aux(rd());
+    seed = aux;
 
     pub = config.advertise<messages::TargetSystemData>("TargetSystemData", 10);
 }
@@ -160,56 +167,57 @@ void G4T1::collect(const messages::SensorData::ConstPtr& msg) {
         lost_packt = true;
     }
 }
-double G4T1::compute_risk(std::string sensor, double raw_number){
+
+double G4T1::compute_risk(std::string sensor, double raw_number){ //CHANGED HERE
 
     bsn::configuration::SensorConfiguration sensorConfig;
     std::array<bsn::range::Range,5> ranges;
     if(sensor=="oxi"){
-        ranges[0] = Range(-1,-1);
-        ranges[1] = Range(-1,-1);
-        ranges[2] = Range(65,100);
-        ranges[3] = Range(55,65);
-        ranges[4] = Range(0,55);
+        ranges[0] = Range(-1.0,-1.0);
+        ranges[1] = Range(-1.0,-1.0);
+        ranges[2] = Range(65.0,100.0);
+        ranges[3] = Range(55.0,65.0);
+        ranges[4] = Range(0.0,55.0);
 
     }else if (sensor=="hr")
     {
-        ranges[0] = Range(0,70);
-        ranges[1] = Range(70,85);
-        ranges[2] = Range(85,97);
-        ranges[3] = Range(97,115);
-        ranges[4] = Range(115,300);
+        ranges[0] = Range(0.0,70.0);
+        ranges[1] = Range(70.0,85.0);
+        ranges[2] = Range(85.0,97.0);
+        ranges[3] = Range(97.0,115.0);
+        ranges[4] = Range(115.0,300.0);
         /* code */
     }else if (sensor=="trm")
     {
-        ranges[0] = Range(0,31.99);
-        ranges[1] = Range(32,35.99);
-        ranges[2] = Range(36,37.99);
-        ranges[3] = Range(38,40.99);
-        ranges[4] = Range(41,50);
+        ranges[0] = Range(0.0,31.99);
+        ranges[1] = Range(32.0,35.99);
+        ranges[2] = Range(36.0,37.99);
+        ranges[3] = Range(38.0,40.99);
+        ranges[4] = Range(41.0,50.0);
         /* code */
     }else if (sensor=="abps")
     {
-        ranges[0] = Range(-1,-1);
-        ranges[1] = Range(-1,-1);
-        ranges[2] = Range(0,120);
-        ranges[3] = Range(120,140);
-        ranges[4] = Range(140,300);
+        ranges[0] = Range(-1.0,-1.0);
+        ranges[1] = Range(-1.0,-1.0);
+        ranges[2] = Range(0.0,120.0);
+        ranges[3] = Range(120.0,140.0);
+        ranges[4] = Range(140.0,300.0);
         /* code */
     }else if (sensor=="abpd")
     {
-        ranges[0] = Range(-1,-1);
-        ranges[1] = Range(-1,-1);
-        ranges[2] = Range(0,80);
-        ranges[3] = Range(80,90);
-        ranges[4] = Range(90,300);
+        ranges[0] = Range(-1.0,-1.0);
+        ranges[1] = Range(-1.0,-1.0);
+        ranges[2] = Range(0.0,80.0);
+        ranges[3] = Range(80.0,90.0);
+        ranges[4] = Range(90.0,300.0);
         /* code */
     }else if (sensor=="glc")
     {
-        ranges[0] = Range(20,39.99);
-        ranges[1] = Range(40,54.99);
-        ranges[2] = Range(55,95.99);
-        ranges[3] = Range(96,119.99);
-        ranges[4] = Range(120,200);
+        ranges[0] = Range(20.0,39.99);
+        ranges[1] = Range(40.0,54.99);
+        ranges[2] = Range(55.0,95.99);
+        ranges[3] = Range(96.0,119.99);
+        ranges[4] = Range(120.0,200.0);
         /* code */
     }
 
@@ -224,13 +232,15 @@ double G4T1::compute_risk(std::string sensor, double raw_number){
     highRanges[1] = ranges[4];
     std::array<Range,3> percentages;
 
-    percentages[0] = Range(0,20);
-    percentages[1] = Range(21,65);
-    percentages[2] = Range(66,100);
+    percentages[0] = Range(0.0,20.0);
+    percentages[1] = Range(21.0,65.0);
+    percentages[2] = Range(66.0,100.0);
     sensorConfig = SensorConfiguration(0, low_range, midRanges, highRanges, percentages);
     double a=sensorConfig.evaluateNumber(raw_number);
     return a;
 }
+
+
 void G4T1::process(){
     battery.consume(BATT_UNIT * data_buffer.size());
     std::vector<double> current_data;
@@ -251,175 +261,127 @@ void G4T1::process(){
 
     //oxi:
     if(mat[current_row_comb][2]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(65,100);
-            oxi = probabilityGenerator(seed);
+    	    std::uniform_real_distribution<double> value_generator(65.0, 100.0);
+            oxi = value_generator(seed);
             oxi_conv=compute_risk("oxi", oxi);
 
     }else if(mat[current_row_comb][3]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(55,65);
-            oxi = probabilityGenerator(seed);
+    	    std::uniform_real_distribution<double> value_generator(55.0, 65.0);
+            oxi = value_generator(seed);
             oxi_conv=compute_risk("oxi", oxi);
 
     }else if(mat[current_row_comb][4]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(0,55);
-            oxi = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(0.0, 55.0);
+            oxi = value_generator(seed);
             oxi_conv=compute_risk("oxi", oxi);
     }
 
     //hr:
     if(mat[current_row_comb][5]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(0,70);
-            hr = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(0.0, 70.0);
+            hr = value_generator(seed);
             hr_conv=compute_risk("hr", hr);
 
     }else if(mat[current_row_comb][6]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(70,85);
-            hr = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(70.0, 85.0);
+            hr = value_generator(seed);
             hr_conv=compute_risk("hr", hr);
 
     }else if(mat[current_row_comb][7]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(85,97);
-            hr = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(85.0, 97.0);
+            hr = value_generator(seed);
             hr_conv=compute_risk("hr", hr);
     }else if(mat[current_row_comb][8]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(97,115);
-            hr = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(97.0, 115.0);
+            hr = value_generator(seed);
             hr_conv=compute_risk("hr", hr);
     }else if(mat[current_row_comb][9]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(115,300);
-            hr = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(115.0, 300.0);
+            hr = value_generator(seed);
             hr_conv=compute_risk("hr", hr);
     }
 
     //trm:
     if(mat[current_row_comb][10]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(0,31.99);
-            trm = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(0.0, 31.99);
+            trm = value_generator(seed);
             trm_conv=compute_risk("trm", trm);
 
     }else if(mat[current_row_comb][11]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(32,35.99);
-            trm = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(32.0, 35.99);
+            trm = value_generator(seed);
             trm_conv=compute_risk("trm", trm);
 
     }else if(mat[current_row_comb][12]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(36,37.99);
-            trm = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(36.0, 37.99);
+            trm = value_generator(seed);
             trm_conv=compute_risk("trm", trm);
     }else if(mat[current_row_comb][13]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(38,40.99);
-            trm = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(38.0, 40.99);
+            trm = value_generator(seed);
             trm_conv=compute_risk("trm", trm);
     }else if(mat[current_row_comb][14]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(41,50);
-            trm = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(41.0, 50.00);
+            trm = value_generator(seed);
             trm_conv=compute_risk("trm", trm);
     }
 
     //abps:
     if(mat[current_row_comb][17]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(0,120);
-            abps = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(0.0, 120.00);
+            abps = value_generator(seed);
             abps_conv=compute_risk("abps", abps);
 
     }else if(mat[current_row_comb][18]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(120,140);
-            abps = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(120.0, 140.00);
+            abps = value_generator(seed);
             abps_conv=compute_risk("abps", abps);
 
     }else if(mat[current_row_comb][19]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(140,300);
-            abps = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(140.0, 300.00);
+            abps = value_generator(seed);
             abps_conv=compute_risk("abps", abps);
     }
 
     //abpd:
     if(mat[current_row_comb][22]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(0,80);
-            abpd = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(0.0, 80.00);
+            abpd = value_generator(seed);
             abpd_conv=compute_risk("abpd", abpd);
 
     }else if(mat[current_row_comb][23]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(80,90);
-            abpd = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(80.0, 90.00);
+            abpd = value_generator(seed);
             abpd_conv=compute_risk("abpd", abpd);
 
     }else if(mat[current_row_comb][24]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(90,300);
-            abpd = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(90.0, 300.00);
+            abpd = value_generator(seed);
             abpd_conv=compute_risk("abpd", abpd);
     }
 
     //glc:
     if(mat[current_row_comb][25]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(20,39.99);
-            glc = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(20.0, 39.99);
+            glc = value_generator(seed);
             glc_conv=compute_risk("glc", glc);
 
     }else if(mat[current_row_comb][26]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(40,54.99);
-            glc = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(40.0, 54.99);
+            glc = value_generator(seed);
             glc_conv=compute_risk("glc", glc);
 
     }else if(mat[current_row_comb][27]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(55,95.99);
-            glc = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(55.0, 95.99);
+            glc = value_generator(seed);
             glc_conv=compute_risk("glc", glc);
     }else if(mat[current_row_comb][28]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(96,119.99);
-            glc = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(96.0, 119.99);
+            glc = value_generator(seed);
             glc_conv=compute_risk("glc", glc);
     }else if(mat[current_row_comb][29]==100){
-            std::random_device rd;
-            std::mt19937 seed(rd());
-            std::uniform_int_distribution<int> probabilityGenerator(120,200);
-            glc = probabilityGenerator(seed);
+            std::uniform_real_distribution<double> value_generator(120.0, 200.00);
+            glc = value_generator(seed);
             glc_conv=compute_risk("glc", glc);
     }
 
@@ -432,7 +394,7 @@ void G4T1::process(){
     current_data.push_back(glc_conv); 
     current_row_comb++;
     std::cout<<std::endl<<current_row_comb<<std::endl;
-    if(current_row_comb==3375){
+    if(current_row_comb>=3375){
                     system("kill $(cat /var/tmp/g4t1.pid && rm /var/tmp/g4t1.pid) & sleep 1s");
                     system("kill $(cat /var/tmp/data_access.pid && rm /var/tmp/data_access.pid) & sleep 1s");
                     system("kill $(cat /var/tmp/strategy_enactor.pid && rm /var/tmp/strategy_enactor.pid) & sleep 1s");
@@ -453,7 +415,8 @@ void G4T1::process(){
                     system("kill $(cat /var/tmp/strategy_manager.pid && rm /var/tmp/strategy_manager.pid) & sleep 1s");
                     system("kill $(pgrep roscore)");
                     system ("killall sleep");
-    }
+    }else{
+    
 
 
     patient_status = data_fuse(current_data);
@@ -606,6 +569,7 @@ void G4T1::process(){
               << ms << '\n';
 
     std::cout << "*****************************************" << std::endl;
+    }
 }
 
 int32_t G4T1::getSensorId(std::string type) {
