@@ -5,6 +5,7 @@
 #include <chrono>
 #include <memory>
 #include <map>
+#include <random> 
 
 #include <ros/package.h>
 #include "ros/ros.h"
@@ -43,6 +44,7 @@ class G4T1 : public CentralHub {
         virtual void transfer();
 
         double compute_risk(std::string sensor, double raw_number);
+        std::mt19937 seed;
 
     private:
         double patient_status;
