@@ -13,7 +13,7 @@ X = data.ix[:,:'Glc-Risk']
 scaler = StandardScaler()
 data_scaled = scaler.fit_transform(X)
 
-kmeans = KMeans(400).fit(data_scaled)
+kmeans = KMeans(360).fit(data_scaled)
 labels = kmeans.labels_
 silhouette_avg = silhouette_score(data_scaled, labels)
 print("Silhouette Score:", silhouette_avg)

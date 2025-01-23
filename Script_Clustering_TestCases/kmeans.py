@@ -95,8 +95,8 @@ scaler = StandardScaler()
 data_scaled = scaler.fit_transform(X)
 
 
-my_kmeans (data_scaled,400,y,0)
-plot_2_Dataset1es(0,400)
+my_kmeans (data_scaled,360,y,0)
+plot_2_Dataset1es(0,360)
 
 
 
